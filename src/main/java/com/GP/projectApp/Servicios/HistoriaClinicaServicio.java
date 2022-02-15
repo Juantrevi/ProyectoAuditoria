@@ -59,7 +59,28 @@ public class HistoriaClinicaServicio {
         if (historia.isEmpty()){
             throw new IllegalStateException("No existe historia clinica con ese id");
         }
-
         return historia.get();
+    }
+
+    @Transactional
+    public void modificar(Long id, String nombre, String atencion, String correccion, Usuario usuario){
+
+        Optional<HistoriaClinica> historia = historiaRepositorio.findById(id);
+        HistoriaClinica historiaClinica = historia.get();
+        historiaClinica.setNombre(nombre);
+        historiaClinica.setAtencion(atencion);
+        historiaClinica.setCorreccion(correccion);
+        historiaClinica.setUsuarioSubida(usuario);
+
+        historiaRepositorio.save(historiaClinica);
+    }
+
+    @Transactional
+    public void borrar(Long id){
+
+        HistoriaClinica historiaClinica = historiaRepositorio.getById(id);
+
+        historiaRepositorio.deleteById(id);
+
     }
 }
