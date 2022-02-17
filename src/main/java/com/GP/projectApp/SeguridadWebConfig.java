@@ -25,17 +25,17 @@ public class SeguridadWebConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/usuario/crearUsuario", "/**", "/app/registrarse","/app/administrador")
+                .antMatchers("/crearUsuario", "/**", "/app/registrarse","/app/administrador")
                 .permitAll()
                 .and().formLogin().loginPage("/login")
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/app/index")
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and().logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/app/index")
+                .logoutSuccessUrl("/")
                 .permitAll()
         ;
     }

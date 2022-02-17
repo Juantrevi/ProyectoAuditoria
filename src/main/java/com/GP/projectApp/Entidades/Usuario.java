@@ -18,8 +18,8 @@ public class Usuario implements UserDetails {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private Roles roles;
-    private boolean habilitado = false;
+    private Roles roles = Roles.USER;
+    private boolean habilitado = true;
     private boolean deshabilitado = false;
 
     public Usuario(){

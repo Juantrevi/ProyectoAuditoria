@@ -29,7 +29,7 @@ public class UsuarioServicio  implements UserDetailsService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    private void registrarUsuario(Usuario usuario){
+    public void registrarUsuario(Usuario usuario){
 
         Boolean existe = usuarioRepositorio.findUsuariosByEmail(usuario.getEmail()).isPresent();
 
@@ -39,6 +39,8 @@ public class UsuarioServicio  implements UserDetailsService {
         String encodePass = bCryptPasswordEncoder.encode(usuario.getPassword());
         usuario.setPassword(encodePass);
         usuarioRepositorio.save(usuario);
+
+
 
     }
 
