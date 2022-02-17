@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -18,12 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public class UsuarioServicio  implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     private void registrarUsuario(Usuario usuario){
 
