@@ -20,7 +20,7 @@
 <title>Auditoria | Grupo Pediatrico S.A</title>
 <body id="principal" class="img-fluid">
 
-<nav class="navbar navbar-expand-lg nav1" style="background-color: #e3f2fd;">
+<nav th:fragment="nav" class="navbar navbar-expand-lg nav1" style="background-color: #e3f2fd;">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">
             <img th:src="@{/imagenes/logo.png}" alt="" width="40" height="40">
@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a th:if="${session.usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}">Iniciar Sesion</a>
+                    <a th:if="${session.usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/login}">Iniciar Sesion</a>
                 </li>
                 <li class="nav-item">
                     <a th:if="${session.usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/crearusuario}">Registrarse</a>
@@ -48,17 +48,18 @@
 </nav>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<div  class="footer" th:fragment="footer" >
+<div class="footer" th:fragment="foote" >
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" >
-            <div class="col-md-4 d-flex align-items-center" >
+            <div class="col-md-4 d-flex align-items-center " >
                 <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
                 </a>
                 <span class="text-muted">&copy; 2022 Grupo Pediatrico S.A, Servicio De Auditoria</span>
+            </div>
+            <div class="text-right">
                 <a class="navbar-brand" th:href="@{/}">
                     <img th:src="@{/imagenes/logo.png}"  alt="" width="70" height="70">
                 </a>
-
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

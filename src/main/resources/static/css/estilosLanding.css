@@ -12,3 +12,32 @@
 .nav1{
     align: center;
 }
+
+.login{
+    /*min-height: 100vh;*/
+    background: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.05)),
+    url(../imagenes/login.png) no-repeat center center ;
+    background-size: cover;
+    border-radius: 15px ;
+
+
+}
+
+.registrarse{
+    background: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.05)),
+    url(../imagenes/registrarse.png) no-repeat center center ;
+    background-size: cover;
+    border-radius: 15px ;
+}
+
+.contenido{
+    border-radius: 15px;
+    border: solid 1px;
+    border-color: rgba(0, 0, 0, 0);
+    padding: 15px 15px 15px 15px;
+}
+h2, label, span{
+    color: #d3d3d3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}

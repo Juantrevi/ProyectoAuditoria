@@ -1,62 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="/index :: head"></head>
-    <title>Title</title>
+    <title>Registrarse</title>
 
 
 
-<body id="principal">
-<div class="container">
-    <div class="ro">
-        <div class="col-12" style="height: 80px;">
+<body id="principal" class="img-fluid">
+<nav th:replace="/index :: nav"></nav>
 
+<div class="container mt-2 py-5 b-5 contenido" id="contenido">
+    <div class="row ">
+        <div class="col-6 registrarse">
+            <!--      <img th:src="@{/imagenes/login.png}" >-->
         </div>
-    </div>
+        <div class="col-6">
 
-</div>
-<div class="container mt-5 py-5 b-5" id="contenido">
-    <div class="row">
-        <div class="pt-5 mt-5 col-7 img-fluid">
-            <img th:src="@{/images/congreso.jpg}" >
-
-        </div>
-        <div class="col-4">
-
-            <div class="text-end">
-                <img th:src="@{/images/logo.png}" width="48" alt="">
+            <div class="text-center">
+                <img th:src="@{imagenes/logo.png}" width="50" alt="">
             </div>
-            <h2 class="fw-bold text-center py-5">Bienvenido</h2>
+            <h2 class="fw-bold text-center py-5">Registrarse</h2>
             <!-- LOGIN -->
             <form th:action="@{/confirmacion}" th:object="${usuario}" method="POST" >
                 <div class="mb-4">
                     <label class="form-label" >Nombre</label><br>
-                    <input type="text" placeholder="nombre" name="nombre" class="form_input" th:value="${usuario.nombre}">
+                    <input type="text" placeholder="Nombre" name="nombre" class="form_input" th:value="${usuario.nombre}">
                 </div>
                 <div class="mb-4">
                     <label class="form-label">Apellido</label><br>
-                    <input type="text" placeholder="apellido" name="apellido" class="form_input" th:value="${usuario.apellido}">
+                    <input type="text" placeholder="Apellido" name="apellido" class="form_input" th:value="${usuario.apellido}">
                 </div>
-                <!--
-                <div class="mb-4">
-                    <label>DNI: <br>
-                         <input type="tel" name="documento" th:value="${dni}"></label>
-                </div>
-                -->
                 <div class="mb-4">
                     <label class="form-label">Correo Electronico</label>
                     <input type="email" class="form-control" name="email" th:value="${usuario.email}">
                 </div>
-                <!-- opcinal -->
-
-
-                <!--
-                 <div class="sexo mb-4">
-                     <label>Sexo:</label><br>
-                     <label>Hombre<input type="radio" name="s" class="sex"></label>
-                     <label>Mujer<input type="radio" name="s" class="sex"></label>
-                     <label>No binario<input type="radio" name="s" class="sex"></label>
-                 </div>
-                 -->
                 <div class="mb-4">
                     <div class="mb-4">
                         <label class="form-label">Password</label>
@@ -70,9 +46,9 @@
                 <div class="d-grid text-center ">
                     <button type="submit" class="bnt btn-primary btn-lg"> Registrarse</button>
                 </div>
-                <div class="my-3 text-center">
-                    <span><a href="#">Recuperar Contraseña</a></span>
-                </div>
+<!--                <div class="my-3 text-center">-->
+<!--                    <span><a href="#">Recuperar Contraseña</a></span>-->
+<!--                </div>-->
             </form>
             <!-- LOGIN CON REDES SOCIALES (OPCIONAL// )
             <div class="container w-100 my-5">
@@ -98,7 +74,7 @@
     </div>
 </div>
 
-
+<div th:replace="/index :: foote"></div>
 <!-- ARCHIVOS BOOTSTRAP JAVASCRIPT -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/popper.min.js"></script>
