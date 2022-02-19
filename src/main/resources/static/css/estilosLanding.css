@@ -5,27 +5,74 @@
 #principal{
     min-height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.37)),
-     url(../imagenes/fondoindex.png) no-repeat center center;
+     url(../imagenes/fondoindex.png) center center no-repeat;
     background-size: cover;
+    background-color: #000002;
+}
+.bx-o{
+    border: solid 1px;
+    border-color: #71dd8a;
+    margin: 300px 100px;
+    padding: 50px 25px;
+}
+
+.utilidades .col-12{
+    border-bottom: 1px solid #cdd2da;
+    border-right: 1px solid #c5cfd7;
+}
+.utilidades .col-12:nth-child(3n){
+    border-right: none;
+}
+.utilidades .col-12:nth-child(1n+4){
+    border-bottom: none;
+}
+.utilidades{
+    margin-bottom: 150px;
+    margin-top: 100px;
+}
+
+
+
+.utilidades a {
+    color: #d3d3d3;
+
 }
 
 .nav1{
-    align: center;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: linear-gradient(rgba(54, 54, 54, 0.61), rgba(65, 64, 64, 0.37));
+
+}
+.btn-nav{
+    border: solid 1px whitesmoke;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px;
+    margin: 10px;
+    background-color: #d3d3d3;
+    color: rgba(0, 0, 0, 0.75);
+}
+.letrasnav{
+    font-size: 20px;
 }
 
 .login{
     /*min-height: 100vh;*/
     background: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.05)),
-    url(../imagenes/login.png) no-repeat center center ;
+    url(../imagenes/registrarse.png) no-repeat center center ;
     background-size: cover;
     border-radius: 15px ;
+}
 
-
+.form-control{
+    background: #E8F0FE;
 }
 
 .registrarse{
     background: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.05)),
-    url(../imagenes/registrarse.png) no-repeat center center ;
+    url(../imagenes/login.png) no-repeat center center ;
     background-size: cover;
     border-radius: 15px ;
 }
@@ -36,7 +83,7 @@
     border-color: rgba(0, 0, 0, 0);
     padding: 15px 15px 15px 15px;
 }
-h2, label, span{
+h2, label, span, h1, p{
     color: #d3d3d3;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
