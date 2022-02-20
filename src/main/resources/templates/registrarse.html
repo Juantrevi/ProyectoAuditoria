@@ -11,7 +11,6 @@
 <div class="container mt-2 py-8 b-5 contenido" id="contenido">
     <div class="row ">
         <div class="col-6 registrarse">
-            <!--      <img th:src="@{/imagenes/login.png}" >-->
         </div>
 
         <div class="col-6">
@@ -19,6 +18,7 @@
                 <img th:src="@{imagenes/logosoloblanco.png}" width="150" alt="">
             </div>
             <h2 class="fw-bold text-center py-0">Registrarse</h2>
+            <p th:if="${error != null}" th:text="${error}" class="alert alert-danger" role="alert"> </p>
             <!-- LOGIN -->
             <form th:action="@{/confirmacion}" th:object="${usuario}" method="POST" >
                 <div class="mb-4">

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/index :: head"></head>
+<title>Iniciar Sesion</title>
+<body id="principal" class="img-fluid">
+<nav th:replace="/index :: nav"></nav>
+<div class="container mt-0 py-5 b-5 align-content-center ">
+    <div class="row ">
+<div class="col-12">
+      <div class="text-center">
+        <img th:src="@{imagenes/logosoloblanco.png}" width="150" alt="">
+      </div>
+      <h1 class="fw-bold text-center py-0">Listado de Historias Clinicas</h1><br>
+
+        <div class="justify-content-center">
+
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                                <th scope="col">Descargar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="pdf : ${pdfs}">
+                                <th scope="row" th:text="${pdf.id}"></th>
+                                <td th:text="${pdf.nombre}"></td>
+                                <td th:text="${pdf.usuario}"></td>
+
+                                <td>
+                                    <a  th:href="@{/editar/{id}/(id=${pdf.id})}">
+                                     <i class="fas fa-edit fa-2x text-info"></i></a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/eliminar/{id}/(id=${pdf.id})}"
+                                       onclick="return confirm('Estas seguro de eliminar la historia clinica (No se puede recuperar)?');">
+                                        <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:download="${pdf.nombre+'.pdf'}" th:href="@{/descargar/{id}/(id=${pdf.id})}">
+                                    <i class="fas fa-file-download fa-2x text-success"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+        </div>
+
+
+
+
+</div>
+    </div>
+    </div>
+
+
+<div th:replace="/index :: foote"></div>
+
+
+<!-- ARCHIVOS BOOTSTRAP JAVASCRIPT -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/libs/universal-parallax/dist/universal-parallax.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
+        integrity="sha512-fzff82+8pzHnwA1mQ0dzz9/E0B+ZRizq08yZfya66INZBz86qKTCt9MLU0NCNIgaMJCgeyhujhasnFUsYMsi0Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script th:src="@{/js/misscripts.js}"></script>
+<script>var aparece = 0;
+if (aparece != 1) {
+    $('#aviso').modal('show');
+}
+</script>
+</body>
+</html>

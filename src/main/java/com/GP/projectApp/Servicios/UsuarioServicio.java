@@ -40,8 +40,6 @@ public class UsuarioServicio  implements UserDetailsService {
         usuario.setPassword(encodePass);
         usuarioRepositorio.save(usuario);
 
-
-
     }
 
 

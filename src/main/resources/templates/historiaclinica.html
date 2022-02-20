@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/index :: head"></head>
+<title>Iniciar Sesion</title>
+<body id="principal" class="img-fluid">
+<nav th:replace="/index :: nav"></nav>
+<div class="container mt-2 py-5 b-5 align-content-center ">
+    <div class="row ">
+<div class="col-12">
+      <div class="text-center">
+        <img th:src="@{imagenes/logosoloblanco.png}" width="150" alt="">
+      </div>
+      <h1 class="fw-bold text-center py-0">Agregar Historia Clinica</h1><br><br><br><br>
+
+
+    <form th:action="@{/subirpdf}" th:object="${pdf}" method="POST"  enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+    <div class="mb-4 text-center">
+        <label class="form-label justify-content-end" ><h2>Nombre de Historia Clinica</h2></label><br>
+        <input type="text" placeholder="Nombre" name="nombre" class="form-control" th:value="${pdf.nombre}" th:field="*{nombre}">
+    </div>
+    <div class="mb-4 text-center">
+        <label class="form-label text-right" ><h2>Subir Historia clinica</h2></label><br>
+        <input type="file" name="file" class="m-3">
+       </div>
+
+
+    <div class="d-grid text-center ">
+        <button type="submit" class="bnt btn-primary btn-lg">Guardar</button>
+    </div>
+
+</form>
+</div>
+    </div>
+    </div>
+
+
+<div th:replace="/index :: foote"></div>
+
+
+<!-- ARCHIVOS BOOTSTRAP JAVASCRIPT -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

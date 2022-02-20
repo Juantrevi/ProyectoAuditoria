@@ -20,6 +20,7 @@ public class HistoriaClinica {
     private Usuario usuarioSubida;
     @OneToOne
     private Usuario usuarioCorreccion;
+    private String pdf;
 
     public HistoriaClinica() {
     }
@@ -33,6 +34,7 @@ public class HistoriaClinica {
         this.fechaCorreccion = fechaCorreccion;
         this.usuarioSubida = usuarioSubida;
         this.usuarioCorreccion = usuarioCorreccion;
+
     }
 
     public Long getId() {
@@ -106,4 +108,6 @@ public class HistoriaClinica {
     public void setUsuarioCorreccion(Usuario usuarioCorreccion) {
         this.usuarioCorreccion = usuarioCorreccion;
     }
+
 }
+

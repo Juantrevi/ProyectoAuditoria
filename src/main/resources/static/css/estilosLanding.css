@@ -88,3 +88,26 @@ h2, label, span, h1, p{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
+input[type="file"] {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+input{
+    border: solid 1px whitesmoke;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px;
+    margin: 10px;
+    background-color: #d3d3d3;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: x-large ;
+}
+.file-upload-button{
+    margin: 4px 8px 4px 4px;!important;
+}
+
+th, td{
+    color: #d3d3d3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}

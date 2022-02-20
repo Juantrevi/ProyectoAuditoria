@@ -21,25 +21,29 @@
 <title>Auditoria | Grupo Pediatrico S.A</title>
 <body id="principal" class="">
 
-<nav th:fragment="nav" class="navbar navbar-expand-lg nav1">
+<nav th:fragment="nav" class="d-flex navbar navbar-expand-lg nav1">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">
             <img th:src="@{/imagenes/logosoloblanco.png}" alt="" width="50" height="50">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-6 mb-lg-0 letrasnav">
                 <li class="nav-item">
-                    <a th:if="${session.usuariosession == null}" class="nav-link active btn-nav" aria-current="page" th:href="@{/login}">Iniciar Sesion</a>
+                    <a th:if="${session.usuariosession == null}" class="nav-link active btn-nav"
+                       aria-current="page" th:href="@{/login}">Iniciar Sesion</a>
                 </li>
                 <li class="nav-item">
-                    <a th:if="${session.usuariosession == null}" class="nav-link active btn-nav" aria-current="page" th:href="@{/crearusuario}">Registrarse</a>
+                    <a th:if="${session.usuariosession == null}" class="nav-link active btn-nav"
+                       aria-current="page" th:href="@{/crearusuario}">Registrarse</a>
                 </li>
                 <li class="nav-item">
-                    <a th:if="${session.usuariosession != null}" class="nav-link active btn-nav" aria-current="page" th:href="@{/logout}">Salir</a>
+                    <a th:if="${session.usuariosession != null}" class="nav-link active btn-nav"
+                       aria-current="page" th:href="@{/logout}">Salir</a>
                 </li>
             </ul>
 
@@ -48,8 +52,10 @@
 </nav>
 
 <section th:if="${session.usuariosession == null}" class="utilidades">
-    <div class="container py-0">
-        <h1 class="font-weight-bold text-center ">Hola! <br> <i class="far fa-hand-paper"></i><br> Debe iniciar sesion para poder trabajar </h1>
+    <div class="container py-0 text-center">
+            <p th:if="${mensaje != null}" th:text="${mensaje}" class="alert alert-info" role="alert"> </p>
+        <h1 class="font-weight-bold text-center ">Hola! <br> <i class="far fa-hand-paper"></i><br>
+            Debe iniciar sesion para poder trabajar </h1>
     </div>
 </section>
 
@@ -72,8 +78,8 @@
                     <div class="rounded text-center">
                         <p>Aqui podras encontrar historias clinicas</p>
                         <p class="text-center">
-                            <a href="#informacion" role="button" class="btn btn-info" data-toggle="collapse"
-                               aria-expanded="true">Ingresar</a>
+                            <a th:href="@{/historiaclinica}" class="btn btn-info"
+                               aria-current="page"> Ingresar</a>
                         </p>
                     </div>
                 </div>

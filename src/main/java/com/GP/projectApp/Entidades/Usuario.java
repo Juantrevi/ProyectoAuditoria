@@ -21,17 +21,21 @@ public class Usuario implements UserDetails {
     private Roles roles = Roles.USER;
     private boolean habilitado = true;
     private boolean deshabilitado = false;
+    private String file;
 
     public Usuario(){
 
     }
 
-    public Usuario(String nombre, String apellido, String email, String password, Roles roles) {
+    public Usuario(String nombre, String apellido, String email, String password, Roles roles, boolean habilitado, boolean deshabilitado, String file) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.habilitado = habilitado;
+        this.deshabilitado = deshabilitado;
+        this.file = file;
     }
 
     public Long getId() {
@@ -92,6 +96,14 @@ public class Usuario implements UserDetails {
 
     public void setDeshabilitado(boolean deshabilitado) {
         this.deshabilitado = deshabilitado;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
     }
 
     @Override
