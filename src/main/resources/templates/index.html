@@ -55,7 +55,7 @@
     <div class="container py-0 text-center">
             <p th:if="${mensaje != null}" th:text="${mensaje}" class="alert alert-info" role="alert"> </p>
         <h1 class="font-weight-bold text-center ">Hola! <br> <i class="far fa-hand-paper"></i><br>
-            Debe iniciar sesion para poder trabajar </h1>
+            Debe iniciar sesion para poder trabajar </h1><br><br><br><br>
     </div>
 </section>
 
@@ -76,13 +76,21 @@
                 </a>
                 <div class="collapse" id="documento">
                     <div class="rounded text-center">
-                        <p>Aqui podras encontrar historias clinicas</p>
+                        <p>Haga click para ver el listado de historias clinicas</p>
+                        <p class="text-center">
+
+                            <a th:href="@{/listarhistorias}" class="btn btn-info"
+                               aria-current="page">Ver Listado</a>
+                        </p>
+
+                        <p>Haga click para agregar una historia clinica</p>
                         <p class="text-center">
                             <a th:href="@{/historiaclinica}" class="btn btn-info"
-                               aria-current="page"> Ingresar</a>
+                               aria-current="page"> Agregar</a>
                         </p>
                     </div>
                 </div>
+
             </div>
 
 

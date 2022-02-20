@@ -42,6 +42,11 @@ public class UsuarioServicio  implements UserDetailsService {
 
     }
 
+    public Optional<Usuario> encontrarUsuarioEmail(String email){
+
+        return usuarioRepositorio.findUsuariosByEmail(email);
+    }
+
 
 
 

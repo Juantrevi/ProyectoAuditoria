@@ -11,13 +11,13 @@ public class Pdf implements Serializable {
     private Long id;
 
     private String nombre;
-    @OneToOne
-    private Usuario usuario;
+
+    private String usuario;
 
     public Pdf() {
     }
 
-    public Pdf(String nombre, Usuario usuario) {
+    public Pdf(String nombre, String usuario) {
         this.nombre = nombre;
         this.usuario = usuario;
     }
@@ -39,11 +39,11 @@ public class Pdf implements Serializable {
         this.nombre = nombre;
     }
 
-    public Usuario getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 

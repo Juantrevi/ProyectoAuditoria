@@ -4,11 +4,13 @@ package com.GP.projectApp.Controladores;
 import com.GP.projectApp.Entidades.Pdf;
 import com.GP.projectApp.Entidades.Usuario;
 import com.GP.projectApp.Repositorios.PdfRepositorio;
+import com.GP.projectApp.Repositorios.UsuarioRepositorio;
 import com.GP.projectApp.Servicios.PdfServicio;
 import com.GP.projectApp.Servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -17,17 +19,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class IndexControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
     @Autowired
     private PdfRepositorio pdfRepositorio;
     @Autowired
@@ -78,6 +82,7 @@ public class IndexControlador {
         return "historiaclinica";
     }
 
+//    @Secured("ROLE_USER")
     @PostMapping("/subirpdf")
     public String subir(@RequestParam(value = "file", required = false)MultipartFile file,  /*Usuario usuario,*/ RedirectAttributes attributes, Pdf pdf){
             if (pdf.getId()==null){
@@ -90,8 +95,19 @@ public class IndexControlador {
                 /*usuario.setFile(file.getOriginalFilename());*/
 
 
+                Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                UserDetails userDetails = null;
+                if (principal instanceof UserDetails){
+                    userDetails = (UserDetails) principal;
+                }
+                String usuario = userDetails.getUsername();
+
+                Optional<Usuario> usuario1 = usuarioServicio.encontrarUsuarioEmail(usuario);
+
+                pdf.setUsuario(usuario1.get().getNombre() + " " + usuario1.get().getApellido());
+
                 pdf.setNombre(pdf.getNombre());
-                pdf.setUsuario(null);
+
             }catch (Exception e){
                 e.getMessage();
             }
