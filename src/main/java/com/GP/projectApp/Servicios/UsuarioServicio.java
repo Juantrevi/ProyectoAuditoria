@@ -32,9 +32,14 @@ public class UsuarioServicio  implements UserDetailsService {
     public void registrarUsuario(Usuario usuario){
 
         Boolean existe = usuarioRepositorio.findUsuariosByEmail(usuario.getEmail()).isPresent();
-
         if (existe){
             throw new IllegalStateException("Usuario con ese e-mail ya existe");
+        }
+        if (!usuario.getPassword().equals(usuario.getPassword2())){
+            throw new IllegalStateException("Sus contraseñas no coinciden");
+        }
+        if (usuario.getApellido() == null ||usuario.getApellido().length()==0 || usuario.getNombre() == null || usuario.getNombre().length() == 0){
+            throw new IllegalStateException("Nombre o Apellido no pueden estar vacios");
         }
         String encodePass = bCryptPasswordEncoder.encode(usuario.getPassword());
         usuario.setPassword(encodePass);

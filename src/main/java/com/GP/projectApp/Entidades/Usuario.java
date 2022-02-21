@@ -17,21 +17,23 @@ public class Usuario implements UserDetails {
     private String apellido;
     private String email;
     private String password;
+    @Transient
+    private String password2;
     @Enumerated(EnumType.STRING)
     private Roles roles = Roles.USER;
     private boolean habilitado = true;
     private boolean deshabilitado = false;
     private String file;
 
-    public Usuario(){
-
+    public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String email, String password, Roles roles, boolean habilitado, boolean deshabilitado, String file) {
+    public Usuario(String nombre, String apellido, String email, String password, String password2, Roles roles, boolean habilitado, boolean deshabilitado, String file) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
+        this.password2 = password2;
         this.roles = roles;
         this.habilitado = habilitado;
         this.deshabilitado = deshabilitado;
@@ -106,6 +108,14 @@ public class Usuario implements UserDetails {
         this.file = file;
     }
 
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(roles.name());
@@ -141,5 +151,7 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return habilitado;
     }
+
+
 }
 

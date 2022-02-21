@@ -35,13 +35,15 @@
                 </div>
                 <div class="mb-4">
                     <div class="mb-4">
-                        <label class="form-label">Password</label><br>
+                        <label class="form-label">Contraseña</label><br>
                         <input type="password" class="form-control" name="password" th:value="${usuario.password}">
                     </div>
                 </div>
-                <div class="mb-4 form-check">
-                    <input type="checkbox" name="connected" class="form-check-input">
-                    <label class="form-check-label">Mantenerme conectado</label>
+                <div class="mb-4">
+                    <div class="mb-4">
+                        <label class="form-label">Repita Su Contraseña</label><br>
+                        <input type="password" class="form-control" name="password2" th:value="${usuario.password2}">
+                    </div>
                 </div>
                 <div class="d-grid text-center ">
                     <button type="submit" class="bnt btn-primary btn-lg"> Registrarse</button>

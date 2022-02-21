@@ -9,6 +9,7 @@ import com.GP.projectApp.Servicios.PdfServicio;
 import com.GP.projectApp.Servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -55,12 +56,14 @@ public class IndexControlador {
     @PostMapping( "/confirmacion")
     public String confirmacion(Model model, @ModelAttribute Usuario usuario){
 
+
+
         try{
             usuarioServicio.registrarUsuario(usuario);
             model.addAttribute("mensaje", "Cuenta creada satisfactoriamente, puede iniciar sesion");
             return "index";
         }catch (IllegalStateException e){
-            model.addAttribute("error", "Usuario ya existe con ese email" );
+            model.addAttribute("error", e.getMessage());
             return "registrarse";
         }
     }
@@ -90,7 +93,7 @@ public class IndexControlador {
                 String ruta = "C:\\Users\\Juan Manuel\\Desktop\\Proyectos IntelliJ\\ProyectoAuditoria\\src\\main\\resources\\static\\pdf";
             try {
                 byte[] bytes = file.getBytes();
-                Path rutaAbsoluta = Paths.get(ruta + "\\" + pdf.getNombre());
+                Path rutaAbsoluta = Paths.get(ruta + "\\" + pdf.getNombre() + ".pdf");
                 Files.write(rutaAbsoluta, bytes);
                 /*usuario.setFile(file.getOriginalFilename());*/
 
@@ -154,6 +157,8 @@ public class IndexControlador {
         model.addAttribute("pdf", pdf);
         return "/historiaclinica";
     }
+
+
     @GetMapping("/descargar/{id}")
     @ResponseBody
     public FileSystemResource descargar(@PathVariable("id") Long id, Model model){
