@@ -9,8 +9,8 @@ import com.GP.projectApp.Servicios.PdfServicio;
 import com.GP.projectApp.Servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +23,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,13 +88,13 @@ public class IndexControlador {
 
 //    @Secured("ROLE_USER")
     @PostMapping("/subirpdf")
-    public String subir(@RequestParam(value = "file", required = false)MultipartFile file,  /*Usuario usuario,*/ RedirectAttributes attributes, Pdf pdf){
+    public String subir(@RequestParam(value = "file", required = false)MultipartFile file, RedirectAttributes attributes, Pdf pdf){
             if (pdf.getId()==null){
             if (!file.isEmpty()){
                 String ruta = "C:\\Users\\Juan Manuel\\Desktop\\Proyectos IntelliJ\\ProyectoAuditoria\\src\\main\\resources\\static\\pdf";
             try {
                 byte[] bytes = file.getBytes();
-                Path rutaAbsoluta = Paths.get(ruta + "\\" + pdf.getNombre() + ".pdf");
+                Path rutaAbsoluta = Paths.get(ruta + "\\" + pdf.getNombre());
                 Files.write(rutaAbsoluta, bytes);
                 /*usuario.setFile(file.getOriginalFilename());*/
 
@@ -111,13 +112,15 @@ public class IndexControlador {
 
                 pdf.setNombre(pdf.getNombre());
 
+                pdf.setCreado(new Date());
+
             }catch (Exception e){
                 e.getMessage();
             }
             pdfRepositorio.save(pdf);
             attributes.addFlashAttribute("mensaje", "Archivo subido");
             }
-        return "redirect:/historiaclinica";
+        return "redirect:/listarhistorias";
     }else {
                 try {
                     if (file.isEmpty()){
@@ -136,10 +139,25 @@ public class IndexControlador {
     @GetMapping("/listarhistorias")
     public String listar(Model model){
         List<Pdf> todos = pdfServicio.traerTodos();
+        String nombre = "";
         model.addAttribute("pdfs", todos);
+        model.addAttribute("nombre", nombre);
+
         return "listarhistorias";
     }
+    @GetMapping("/unasolanombre")
+    public String unaSola(@RequestParam("nombre") String nombre, Model model){
+        model.addAttribute("pdfs", pdfServicio.coincidenciasNombre(nombre));
+        return "listarhistorias";
 
+    }
+
+    @GetMapping("/unasolausuario")
+    public String unaSolaUsuario(@RequestParam("nombre") String nombre, Model model){
+        model.addAttribute("pdfs", pdfServicio.coincidenciasUsuario(nombre));
+        return "listarhistorias";
+
+    }
     @GetMapping("/eliminar/{id}")
     public String eliminarHistoria(@PathVariable("id") Long idHistoria, RedirectAttributes redirectAttributes){
 

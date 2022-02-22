@@ -6,14 +6,37 @@
 <nav th:replace="/index :: nav"></nav>
 <div class="container mt-0 py-5 b-5 align-content-center ">
     <div class="row ">
-<div class="col-12">
-      <div class="text-center">
-        <img th:src="@{imagenes/logosoloblanco.png}" width="150" alt="">
-      </div>
-      <h1 class="fw-bold text-center py-0">Listado de Historias Clinicas</h1><br>
+        <div class="col-12">
+            <div class="text-center justify-content">
+                <a th:href="@{/}">
+                <img th:src="@{imagenes/logosoloblanco.png}" width="150" alt="">
+                    <p>VOLVER AL INICIO</p>
+                </a>
+            </div>
+            <h1 class="fw-bold text-center py-0">Listado de Historias Clinicas</h1><br>
+            <p class="text-center">
+                <a th:href="@{/historiaclinica}" class="btn btn-info"
+                   aria-current="page"> Agregar Historia</a>
+            </p>
 
-        <div class="justify-content-center">
+            <div class="justify-content-center">
 
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                            <form class="d-flex" th:action="@{/unasolanombre}">
+                                <input class="form-control me-2" type="text" th:name="nombre"
+                                       placeholder="Buscar Por Nombre" aria-label="Search">
+                                <!--                <button class="btn btn-nav" type="submit">Buscar</button>-->
+                            </form>
+                        </div>
+                        <form class="d-flex" th:action="@{/unasolausuario}">
+                            <input class="form-control me-2" type="text" th:name="nombre"
+                                   placeholder="Buscar Por Usuario" aria-label="Search">
+                            <!--                <button class="btn btn-nav" type="submit">Buscar</button>-->
+                        </form>
+                    </div>
+                </div>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -37,12 +60,12 @@
                                 </td>
                                 <td>
                                     <a th:href="@{/eliminar/{id}/(id=${pdf.id})}"
-                                       onclick="return confirm('Estas seguro de eliminar la historia clinica (No se puede recuperar)?');">
+                                       onclick="return confirm('Estas seguro de eliminar la historia clinica? (No se puede recuperar)');">
                                         <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a th:download="${pdf.nombre+'.pdf'}" th:href="@{/descargar/{id}/(id=${pdf.id})}">
+                                    <a th:download="${pdf.nombre + '.pdf'}" th:href="@{/descargar/{id}/(id=${pdf.id})}">
                                     <i class="fas fa-file-download fa-2x text-success"></i>
                                     </a>
                                 </td>

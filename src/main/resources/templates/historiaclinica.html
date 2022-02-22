@@ -6,33 +6,48 @@
 <nav th:replace="/index :: nav"></nav>
 <div class="container mt-2 py-5 b-5 align-content-center ">
     <div class="row ">
-<div class="col-12">
-      <div class="text-center">
-        <img th:src="@{imagenes/logosoloblanco.png}" width="150" alt="">
-      </div>
-      <h1 class="fw-bold text-center py-0">Agregar Historia Clinica</h1><br><br><br><br>
+        <div class="col-12">
+            <div class="text-center justify-content">
+                <a th:href="@{/}">
+                    <img th:src="@{imagenes/logosoloblanco.png}" width="150" alt="">
+                    <p>VOLVER AL INICIO</p>
+                </a>
+            </div>
+            <h1 class="fw-bold text-center py-0">Agregar Historia Clinica</h1>
+            <p class="text-center">
+                <a th:href="@{/historiaclinica}" class="btn btn-info"
+                   aria-current="page"> Ver Listado</a>
+            </p>
 
 
-    <form th:action="@{/subirpdf}" th:object="${pdf}" method="POST"  enctype="multipart/form-data">
-        <input type="hidden" th:field="*{id}">
-    <div class="mb-4 text-center">
-        <label class="form-label justify-content-end" ><h2>Nombre de Historia Clinica</h2></label><br>
-        <input type="text" placeholder="Nombre" name="nombre" class="form-control" th:value="${pdf.nombre}" th:field="*{nombre}">
+            <form th:action="@{/subirpdf}" th:object="${pdf}" method="POST" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-4 text-left pt-4">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-7">
+                                <label class="form-label justify-content-end"><h2>Nombre de Historia Clinica</h2>
+                                </label><br>
+                                <input type="text" placeholder="Nombre" name="nombre" class="form-control"
+                                       th:value="${pdf.nombre}" th:field="*{nombre}">
+                                <div class="mb-4 text-left pt-4">
+                                    <label class="form-label text-left"><h2>Cargar Historia clinica</h2></label><br>
+                                    <input type="file" name="file">
+                                </div>
+                                <div class="d-grid text-left ">
+                                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
     </div>
-    <div class="mb-4 text-center">
-        <label class="form-label text-right" ><h2>Subir Historia clinica</h2></label><br>
-        <input type="file" name="file" class="m-3">
-       </div>
-
-
-    <div class="d-grid text-center ">
-        <button type="submit" class="bnt btn-primary btn-lg">Guardar</button>
-    </div>
-
-</form>
 </div>
-    </div>
-    </div>
 
 
 <div th:replace="/index :: foote"></div>

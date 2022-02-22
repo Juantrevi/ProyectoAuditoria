@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,7 @@ public class PdfServicio {
     public List<Pdf> traerTodos(){
         return pdfRepositorio.findAll();
     }
+
 
     @Transactional
     public void eliminarHistoria(Long id){
@@ -44,6 +46,16 @@ public class PdfServicio {
         pdf1.get().setNombre(pdf.getNombre());
         pdfRepositorio.save(pdf2);
 
+    }
+
+    public List<Pdf> coincidenciasNombre(String nombre){
+
+        return pdfRepositorio.findByNombreContaining(nombre);
+    }
+
+    public List<Pdf> coincidenciasUsuario(String nombre){
+
+        return pdfRepositorio.findByUsuarioContaining(nombre);
     }
 
 }
